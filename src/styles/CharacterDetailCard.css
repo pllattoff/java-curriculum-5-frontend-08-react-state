@@ -1,0 +1,22 @@
+.character-detail-card {
+    max-width: 700px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    display: flex;
+    padding: 20px;
+    gap: 30px;
+}
+
+.character-detail-card img {
+    width: 250px;
+    height: 250px;
+    border-radius: 20px;
+}
+
+.character-detail-info h1 {
+    margin-top: 0;
+}
+
+.character-detail-info p {
+    margin: 10px 0;
+}
