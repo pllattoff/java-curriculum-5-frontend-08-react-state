@@ -2,6 +2,7 @@ import {Character} from "../data/types.ts";
 import CharacterCard from "./CharacterCard.tsx";
 import "../styles/CharacterGallery.css";
 
+
 type CharacterGalleryProps = {
     characters: Character[];
 }
