@@ -1,6 +1,7 @@
 import {FormEvent, useState} from "react";
 import {Character} from "../data/types.ts";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 type NewCharacterPageProps = {
     characters: Character[];
@@ -40,7 +41,7 @@ export default function NewCharacterPage(props: Readonly<NewCharacterPageProps>)
             created: new Date().toISOString()
         };
 
-        props.addCharacter(newCharacter);
+        postCharacter(newCharacter);
         navigate(`/characters/${newCharacter.id}`);
         // setName("");
         // setSpecies("");
@@ -54,6 +55,15 @@ export default function NewCharacterPage(props: Readonly<NewCharacterPageProps>)
         return Math.max(
             ...props.characters.map(character => character.id)
         ) + 1;
+    }
+
+    function postCharacter(character: Character) {
+        axios.post("https://rickandmortyapi.com/api/character", character)
+            .then(response => console.log(response.data))
+            .catch(error => {
+                console.error("Network/API error:", error);
+                props.addCharacter(character);
+            })
     }
 
     return(
@@ -99,7 +109,7 @@ export default function NewCharacterPage(props: Readonly<NewCharacterPageProps>)
             </label>
 
             <button type="submit">
-                Hinzufügen
+                Add
             </button>
         </form>
     )
