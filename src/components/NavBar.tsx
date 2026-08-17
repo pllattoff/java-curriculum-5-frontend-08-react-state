@@ -10,7 +10,11 @@ export default function NavBar() {
             </button>
 
             <button onClick={() => navigate("/characters")}>
-                Gallery
+                Characters
+            </button>
+
+            <button onClick={() => navigate("/characters/add")}>
+                Add Character
             </button>
         </nav>
     )

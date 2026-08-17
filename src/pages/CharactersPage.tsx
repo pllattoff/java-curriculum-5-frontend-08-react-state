@@ -14,7 +14,11 @@ export default function CharactersPage(props: Readonly<CharactersPageProps>) {
 
     return (
         <>
-            <input type="text" onChange={(e) => setSearchText(e.target.value)} placeholder="Search for a character"/>
+            <input
+                type="text"
+                onChange={(e) => setSearchText(e.target.value)}
+                placeholder="Search for a character"
+            />
             {
                 filteredCharacters.length > 0
                     ? <CharacterGallery characters={filteredCharacters}/>
