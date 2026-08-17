@@ -42,6 +42,10 @@ export default function NewCharacterPage(props: Readonly<NewCharacterPageProps>)
 
         props.addCharacter(newCharacter);
         navigate(`/characters/${newCharacter.id}`);
+        // setName("");
+        // setSpecies("");
+        // setStatus("");
+        // setImage("");
     }
 
     function generateId():number {
