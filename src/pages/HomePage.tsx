@@ -1,7 +1,26 @@
+import {useEffect, useState} from "react";
+
 export default function HomePage() {
+
+    const [count, setCount] = useState<number>(0);
+
+    function counterIncrease() {
+        setCount(count+1);
+        console.log(count);
+    }
+
+    useEffect(() => {
+        console.log(count)
+    }, [count]);
+
     return(
         <>
             <h1>Willkommen!</h1>
+
+            <h2>{count}</h2>
+            <button onClick={counterIncrease}>
+                Increase the counter value
+            </button>
         </>
     )
 }

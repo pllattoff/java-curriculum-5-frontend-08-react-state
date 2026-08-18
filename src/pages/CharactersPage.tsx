@@ -1,12 +1,12 @@
 import {useState} from "react";
 import CharacterGallery from "../components/CharacterGallery.tsx";
 import {Character} from "../data/types.ts";
-import axios from "axios";
-
+import SearchBar from "../components/SearchBar.tsx";
 
 type CharactersPageProps = {
     characters: Character[];
-    setCharacters: (characters: Character[]) => void;
+    reload: boolean;
+    setReload: (reload: boolean) => void;
 }
 
 export default function CharactersPage(props: Readonly<CharactersPageProps>) {
@@ -15,19 +15,9 @@ export default function CharactersPage(props: Readonly<CharactersPageProps>) {
     const filteredCharacters = props.characters
         .filter((character) => character.name.toLowerCase().includes(searchText.toLowerCase()));
 
-    function loadAllCharacters() {
-        axios.get("https://rickandmortyapi.com/api/character")
-            .then(response => props.setCharacters(response.data.results))
-            .catch(error => console.log(error));
-    }
-
     return (
         <>
-            <input
-                type="text"
-                onChange={(e) => setSearchText(e.target.value)}
-                placeholder="Search for a character"
-            />
+            <SearchBar setSearchText={setSearchText}/>
 
             {
                 filteredCharacters.length > 0
@@ -37,8 +27,8 @@ export default function CharactersPage(props: Readonly<CharactersPageProps>) {
                     : <p>No characters found</p>
             }
 
-            <button onClick={loadAllCharacters}>
-                Load Characters
+            <button onClick={() => props.setReload(!props.reload)} style={{margin:'15px'}}>
+                Reload Characters
             </button>
         </>
     )

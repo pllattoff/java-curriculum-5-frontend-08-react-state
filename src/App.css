@@ -44,7 +44,9 @@
 }
 
 input {
+    display: block;
     width: 100%;
+    max-width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 20px;
