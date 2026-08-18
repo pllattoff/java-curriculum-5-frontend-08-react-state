@@ -6,7 +6,6 @@ export default function HomePage() {
 
     function counterIncrease() {
         setCount(count+1);
-        console.log(count);
     }
 
     useEffect(() => {
