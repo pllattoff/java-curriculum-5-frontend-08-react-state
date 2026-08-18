@@ -13,7 +13,7 @@ export default function NewCharacterPage(props: Readonly<NewCharacterPageProps>)
     const [name, setName] = useState<string>("");
     const [species, setSpecies] = useState<string>("");
     const [status, setStatus] = useState<string>("");
-    const [image, setImage] = useState<string>("");
+    const [image, setImage] = useState<string>("https://media.moemax.com/i/moemax/PIAeLRYyJ6zLOZSMvyILzAQw/?fmt=auto&%24hq%24=&w=1200");
 
     const navigate = useNavigate();
 
