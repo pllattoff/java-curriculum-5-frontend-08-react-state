@@ -27,7 +27,7 @@ export default function CharactersPage(props: Readonly<CharactersPageProps>) {
                     : <p>No characters found</p>
             }
 
-            <button onClick={() => props.setReload(!props.reload)} style={{margin:'15px'}}>
+            <button onClick={() => props.setReload(!props.reload)} style={{margin:'10px'}}>
                 Reload Characters
             </button>
         </>
