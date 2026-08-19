@@ -1,0 +1,12 @@
+nav button {
+    border-radius: 0;
+    margin: 0;
+}
+
+nav button:first-child {
+    border-radius: 8px 0 0 8px;
+}
+
+nav button:last-child {
+    border-radius: 0 8px 8px 0;
+}

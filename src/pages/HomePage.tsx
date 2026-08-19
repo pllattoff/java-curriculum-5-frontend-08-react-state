@@ -14,7 +14,9 @@ export default function HomePage() {
 
     return(
         <>
-            <h1>Willkommen!</h1>
+            <h1 style={{ fontSize: "32px", margin: "50px" }}>
+                Willkommen!
+            </h1>
 
             <h2>{count}</h2>
             <button onClick={counterIncrease}>

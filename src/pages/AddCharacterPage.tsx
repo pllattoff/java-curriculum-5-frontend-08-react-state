@@ -2,6 +2,7 @@ import {Character} from "../data/types.ts";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useForm} from "react-hook-form";
+import "../styles/AddCharacterPage.css"
 
 type NewCharacterPageProps = {
     characters: Character[];
@@ -15,7 +16,7 @@ type FormValues = {
     image: string;
 };
 
-export default function NewCharacterPage(props: Readonly<NewCharacterPageProps>) {
+export default function AddCharacterPage(props: Readonly<NewCharacterPageProps>) {
     const navigate = useNavigate();
 
     const {
@@ -76,10 +77,12 @@ export default function NewCharacterPage(props: Readonly<NewCharacterPageProps>)
     }
 
     return(
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <label>
-                Name:
+        <form className="character-form" onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-field">
+                <label htmlFor="name">Name:</label>
+
                 <input
+                    id="name"
                     type="text"
                     placeholder="Enter name..."
                     {...register("name", {
@@ -94,26 +97,38 @@ export default function NewCharacterPage(props: Readonly<NewCharacterPageProps>)
                         }
                     })}
                 />
-            </label>
 
-            {errors.name && <p>{errors.name.message}</p>}
+                {errors.name && (
+                    <p className="validation-error">
+                        {errors.name.message}
+                    </p>
+                )}
+            </div>
 
-            <label>
-                Species:
+            <div className="form-field">
+                <label htmlFor="species">Species:</label>
+
                 <input
+                    id="species"
                     type="text"
                     placeholder="Enter species..."
                     {...register("species", {
                         required: "Species is required"
                     })}
                 />
-            </label>
 
-            {errors.species && <p>{errors.species.message}</p>}
+                {errors.species && (
+                    <p className="validation-error">
+                        {errors.species.message}
+                    </p>
+                )}
+            </div>
 
-            <label>
-                Status:
+            <div className="form-field">
+                <label htmlFor="status">Status:</label>
+
                 <input
+                    id="status"
                     type="text"
                     placeholder="Enter status..."
                     {...register("status", {
@@ -123,20 +138,30 @@ export default function NewCharacterPage(props: Readonly<NewCharacterPageProps>)
                             "Status must be Alive, Dead or unknown"
                     })}
                 />
-            </label>
 
-            {errors.status && <p>{errors.status.message}</p>}
+                {errors.status && (
+                    <p className="validation-error">
+                        {errors.status.message}
+                    </p>
+                )}
+            </div>
 
-            <label>
-                Image:
+            <div className="form-field">
+                <label htmlFor="image">Image:</label>
+
                 <input
+                    id="image"
                     type="text"
                     placeholder="Enter the link to the image..."
                     {...register("image")}
                 />
-            </label>
+            </div>
 
-            <button type="submit" disabled={!isValid}>
+            <button
+                className="form-button"
+                type="submit"
+                disabled={!isValid}
+            >
                 Add
             </button>
         </form>
